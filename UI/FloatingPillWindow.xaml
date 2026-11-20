@@ -1,0 +1,96 @@
+<Window x:Class="VoxType.UI.FloatingPillWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VoxType"
+        Width="280"
+        Height="80"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#FF2D2D30"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize">
+
+    <Border x:Name="WindowBorder"
+            Background="#FF2D2D30"
+            BorderBrush="#FF404045"
+            BorderThickness="1">
+        <Grid x:Name="RootGrid"
+              MouseLeftButtonDown="RootGrid_MouseLeftButtonDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" MinWidth="80"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Status Indicator -->
+            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="12,0,0,0" VerticalAlignment="Center">
+                <Ellipse x:Name="StatusIndicator"
+                         Width="16"
+                         Height="16"
+                         Fill="#FF808085"
+                         Stroke="#FFD0D0D5"
+                         StrokeThickness="2"/>
+            </Border>
+
+            <!-- Status Text -->
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                       x:Name="StatusText"
+                       Margin="12,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="11"
+                       Foreground="#FFD0D0D5"
+                       Text="Idle"
+                       FontWeight="Normal"/>
+
+            <!-- Language Toggle (clickable with hand cursor) -->
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                       x:Name="LanguageToggle"
+                       Margin="12,4,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="10"
+                       Foreground="#FFB3B3BA"
+                       Text="EN"
+                       FontWeight="Normal"
+                       MouseLeftButtonDown="LanguageToggle_MouseDown"
+                       Cursor="Hand"/>
+
+            <!-- Start/Stop Button -->
+            <Button Grid.Row="0" Grid.Column="2"
+                    x:Name="StartStopButton"
+                    Margin="0,0,8,0"
+                    Width="36"
+                    Height="36"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Foreground="#FFD0D0D5"
+                    FontSize="10"
+                    FontWeight="Bold"
+                    Content="▶"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Click="StartStopButton_Click"/>
+
+            <!-- Close/Hide Button -->
+            <Button Grid.Row="0" Grid.Column="2"
+                    x:Name="CloseButton"
+                    Margin="0,0,0,0"
+                    Width="20"
+                    Height="20"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Foreground="#FF808085"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Content="✕"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Click="CloseButton_Click"
+                    ToolTip="Hide"/>
+        </Grid>
+    </Border>
+</Window>

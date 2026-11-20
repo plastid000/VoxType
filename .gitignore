@@ -1,0 +1,7 @@
+﻿bin/
+obj/
+.vs/
+models_bin/
+*.bin
+gemini_key.txt
+*.user
