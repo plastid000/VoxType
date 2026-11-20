@@ -65,9 +65,9 @@ jobs:
       - name: Generate SHA256 Checksums
         shell: pwsh
         run: |
-          Get-FileHash dist\* -Algorithm SHA256 |
-            ForEach-Object { "$($_.Hash.ToLower())  $(Split-Path $_.Path -Leaf)" } |
-            Out-File -FilePath dist\SHA256SUMS.txt -Encoding ascii
+          $lines = Get-FileHash dist\*.exe, dist\*.zip -Algorithm SHA256 |
+            ForEach-Object { "$($_.Hash.ToLower())  $(Split-Path $_.Path -Leaf)" }
+          $lines | Out-File -FilePath dist\SHA256SUMS.txt -Encoding ascii
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
